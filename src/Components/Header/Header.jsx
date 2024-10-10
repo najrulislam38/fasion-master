@@ -1,4 +1,3 @@
-import React from "react";
 import Container from "../Container/Container";
 import { Link, useLocation } from "react-router-dom";
 
@@ -21,7 +20,7 @@ const Header = () => {
     },
   ];
   return (
-    <div className="border-b border-gray-300">
+    <div className="border-b border-gray-300 py-1">
       <Container>
         <div className="navbar ">
           <div className="navbar-start">
