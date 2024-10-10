@@ -1,12 +1,10 @@
 import React from "react";
 import Container from "../Container/Container";
 import { Link, useLocation } from "react-router-dom";
-import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 
 const Header = () => {
   const location = useLocation();
   const pathName = location?.pathname;
-  console.log(pathName);
 
   const navLinks = [
     {
@@ -90,16 +88,6 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end flex gap-4 items-center">
-            <form className="flex justify-center relative">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="px-3 py-1 w-48 md:w-60 border bg-white  rounded-xl focus:outline-none focus:ring-1 focus:ring-primary"
-              />
-              <button type="submit" className="absolute top-1 right-2">
-                <MagnifyingGlassIcon className=" size-6 text-primary" />
-              </button>
-            </form>
             <div className="avatar online">
               <div className="ring-primary w-10 rounded-full ring ring-offset-2">
                 <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
