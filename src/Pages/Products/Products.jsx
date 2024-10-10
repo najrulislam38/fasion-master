@@ -1,10 +1,17 @@
+import { useState } from "react";
 import Container from "../../Components/Container/Container";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 
 const Products = () => {
   const axiosPublic = useAxiosPublic();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [sortBy, setSortBy] = useState("none");
+  const [page, setPage] = useState(0);
+  const limit = 10;
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["products"],
@@ -16,13 +23,27 @@ const Products = () => {
 
   const allProducts = data?.products;
 
+  const sortedProducts =
+    sortBy === "none"
+      ? allProducts
+      : allProducts?.sort((a, b) => {
+          switch (sortBy) {
+            case "highToLowPrice":
+              return a.price - b.price;
+            case "lowToHighPrice":
+              return b.price - a.price;
+            default:
+              return 0;
+          }
+        });
+
   if (isLoading) {
     return <h1> Loading ....</h1>;
   }
   if (isLoading) {
     return <h1> {error?.message}</h1>;
   }
-  console.log(allProducts);
+  // console.log(allProducts);
 
   return (
     <div>
@@ -33,7 +54,67 @@ const Products = () => {
       <div className="my-10 md:my-20">
         <Container>
           <div className="mx-auto">
+            {/* Drawar Modal */}
+            <div className="lg:hidden flex justify-between p-4">
+              <h2 className="text-lg font-medium">Filter Options</h2>
+              <button onClick={() => setDrawerOpen(!drawerOpen)}>
+                {drawerOpen ? (
+                  <XMarkIcon className="size-6 " />
+                ) : (
+                  <Bars3Icon className="size-6 " />
+                )}{" "}
+                {/* Icon toggle */}
+              </button>
+            </div>
+
+            {/* Sidebar */}
+            <div
+              className={`lg:hidden fixed inset-0 bg-white z-50 transition-transform transform ${
+                drawerOpen ? "translate-x-0" : "-translate-x-full"
+              }`}
+            >
+              <div className="p-4">
+                <button
+                  onClick={() => setDrawerOpen(false)}
+                  className="absolute top-4 right-4"
+                >
+                  <XMarkIcon className="size-6 " />
+                </button>
+
+                <div>
+                  <h3 className="text-center text-xl md:3xl uppercase tracking-wider mb-7">
+                    Filters
+                  </h3>
+                  <form className="flex flex-row flex-wrap gap-4 items-center">
+                    <label htmlFor="search">Search : </label>
+                    <input
+                      id="search"
+                      type="text"
+                      placeholder="Search..."
+                      className="px-3 py-1  border bg-white  rounded focus:outline-none focus:ring-1 focus:ring-primary text-sm"
+                    />
+                  </form>
+                  <div className="flex items-center gap-4 my-4">
+                    <label htmlFor="sort">Sort By : </label>
+                    <select
+                      onChange={(e) => {
+                        setSortBy(e.target.value);
+                      }}
+                      name="sort"
+                      id="sort"
+                      className="bg-white px-3 py-1 text-black  border rounded focus:ring-1 focus:ring-primary text-sm"
+                    >
+                      <option value="none">Default</option>
+                      <option value="highToLowPrice">High To Low</option>
+                      <option value="lowToHighPrice">Low To High</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="flex gap-5 my-10 ">
+              {/* Drawer Button for small devices */}
+
               {/* side bar */}
               <div className="hidden p-5  lg:block  border-r-2 border-gray-300  ">
                 <div>
@@ -52,11 +133,14 @@ const Products = () => {
                   <div className="flex items-center gap-4 my-4">
                     <label htmlFor="sort">Sort By : </label>
                     <select
+                      onChange={(e) => {
+                        setSortBy(e.target.value);
+                      }}
                       name="sort"
                       id="sort"
                       className="bg-white px-3 py-1 text-black  border rounded focus:ring-1 focus:ring-primary text-sm"
                     >
-                      <option value="">Default</option>
+                      <option value="none">Default</option>
                       <option value="highToLowPrice">High To Low</option>
                       <option value="lowToHighPrice">Low To High</option>
                     </select>
@@ -65,7 +149,7 @@ const Products = () => {
               </div>
 
               {/* content area */}
-              {allProducts?.length > 0 ? (
+              {sortedProducts?.length > 0 ? (
                 <div className="lg:w-4/5 w-full">
                   <div className="grid gap-5 grid-cols-1 md:grid-cols-3  mx-4">
                     {allProducts?.map((data, index) => (

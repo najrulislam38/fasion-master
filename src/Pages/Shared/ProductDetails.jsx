@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import Container from "../Components/Container/Container";
+import Container from "../../Components/Container/Container";
 import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/16/solid";
 
 const ProductDetails = () => {

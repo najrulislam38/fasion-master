@@ -2,7 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layout/Root";
 import Home from "../Pages/Home/Home";
 import Products from "../Pages/Products/Products";
-import ProductDetails from "../Pages/ProductDetails";
+import ProductDetails from "../Pages/Shared/ProductDetails";
+import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
+import DashboardLayout from "../Pages/Dashboard/Layout/DashboardLayout";
+import AllProducts from "../Pages/Dashboard/AllProducts";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -20,6 +23,20 @@ const MainRoutes = createBrowserRouter([
       {
         path: "/product-details/:id",
         element: <ProductDetails />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/all-products",
+        element: <AllProducts />,
       },
     ],
   },
