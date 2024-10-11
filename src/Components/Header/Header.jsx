@@ -63,12 +63,14 @@ const Header = () => {
                 ))}
               </ul>
             </div>
-            <div className="flex flex-col text-center">
-              <h1 className="text-2xl font-semibold leading-none tracking-wider text-primary">
-                Fashion
-              </h1>
-              <p className="text-secondary italic">Master</p>
-            </div>
+            <Link to={"/"}>
+              <div className="flex flex-col text-center">
+                <h1 className="text-2xl font-semibold leading-none tracking-wider text-primary">
+                  Fashion
+                </h1>
+                <p className="text-secondary italic">Master</p>
+              </div>
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="flex flex-row gap-5">
