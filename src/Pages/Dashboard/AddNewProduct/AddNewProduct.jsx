@@ -80,6 +80,9 @@ const AddNewProduct = () => {
                   className="w-full p-3 border rounded-sm bg-white text-black"
                   placeholder="Enter brand name"
                 />
+                {errors.brand && (
+                  <p className="text-red-500 mt-1">{errors.brand.message}</p>
+                )}
               </div>
 
               {/* Availability Status */}
