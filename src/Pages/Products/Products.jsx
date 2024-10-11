@@ -9,20 +9,25 @@ import Loading from "../../Components/Loading/Loading";
 const Products = () => {
   const axiosPublic = useAxiosPublic();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
   const [sortBy, setSortBy] = useState("none");
-  const [page, setPage] = useState(0);
-  const limit = 10;
+  const [searchingProducts, setSearchingProduct] = useState("");
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products", searchingProducts],
     queryFn: async () => {
-      const result = await axiosPublic.get("/products");
+      const result = await axiosPublic.get(
+        `/products?search=${searchingProducts}`
+      );
       return result?.data;
     },
+    enabled: !!searchingProducts || searchingProducts === "",
   });
 
   const allProducts = data?.products;
+
+  const handleSearch = (result) => {
+    setSearchingProduct(result);
+  };
 
   const sortedProducts =
     sortBy === "none"
@@ -127,7 +132,8 @@ const Products = () => {
                     <input
                       id="search"
                       type="text"
-                      placeholder="Search..."
+                      onChange={(e) => handleSearch(e.target.value)}
+                      placeholder="Search here"
                       className="px-3 py-1  border bg-white  rounded focus:outline-none focus:ring-1 focus:ring-primary text-sm"
                     />
                   </form>
