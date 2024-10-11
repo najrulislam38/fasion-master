@@ -20,7 +20,7 @@ const DashBoardSideBar = () => {
     },
   ];
   return (
-    <div className="relative max-w-md bg-[#FCFAEE] min-h-screen border-r border-gray-400 px-5 py-10">
+    <div className="relative max-w-md bg-[#FCFAEE] h-full border-r border-gray-400 px-5 py-10">
       <div className="flex flex-col text-center">
         <h1 className="text-2xl font-semibold leading-none tracking-wider text-primary">
           Fashion
