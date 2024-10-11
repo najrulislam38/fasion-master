@@ -1,4 +1,4 @@
-## Fashion Masther - A E-Commerce shop/store platform.
+## Fashion Masther - An E-Commerce shop/store platform.
 
 Fashion Master is a modern e-commerce platform that delivers the latest trends in fashion to style-conscious customers. With a focus on providing high-quality, fashionable clothing and accessories for all, Fashion Master aims to be the go-to destination for both men’s and women’s fashion. The website offers a user-friendly shopping experience, complete with diverse product categories, easy navigation, and personalized recommendations to suit every individual style. An users can easily search, filter, and sort products.
 
