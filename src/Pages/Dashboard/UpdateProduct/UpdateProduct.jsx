@@ -111,7 +111,7 @@ const UpdateProduct = () => {
                 {...register("title", { required: "Title is required" })}
                 type="text"
                 className="w-full p-3 border rounded-sm bg-white text-black"
-                placeholder="Enter product title"
+                placeholder="Enter title"
               />
               {errors.title && (
                 <p className="text-red-500 mt-1">{errors.title.message}</p>
@@ -122,7 +122,7 @@ const UpdateProduct = () => {
             <div>
               <label className="block mb-2 font-medium">Brand</label>
               <input
-                {...register("brand")}
+                {...register("brand", { required: "Brand is Required" })}
                 type="text"
                 className="w-full p-3 border rounded-sm bg-white text-black"
                 placeholder="Enter brand name"
@@ -141,7 +141,7 @@ const UpdateProduct = () => {
                 })}
                 className="w-full p-3 border rounded-sm bg-white text-black"
               >
-                <option value="">Select Availability Status</option>
+                <option value="">Select Availability</option>
                 <option value={"In Stock"}>In Stock</option>
                 <option value={"Low Stock"}>Low Stock</option>
                 <option value={"Out Of Stock"}>Out Of Stock</option>
@@ -218,7 +218,7 @@ const UpdateProduct = () => {
                 type="number"
                 step="0.01"
                 className="w-full p-3 border rounded-sm bg-white text-black"
-                placeholder="Enter product price"
+                placeholder="Enter price"
               />
               {errors.price && (
                 <p className="text-red-500 mt-1">{errors.price.message}</p>
@@ -276,7 +276,7 @@ const UpdateProduct = () => {
                 })}
                 type="number"
                 className="w-full p-3 border rounded-sm bg-white text-black"
-                placeholder="Enter stock quantity"
+                placeholder="Enter quantity"
               />
               {errors.stock && (
                 <p className="text-red-500 mt-1">{errors.stock.message}</p>
