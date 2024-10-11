@@ -60,14 +60,14 @@ const AllProducts = () => {
   if (isLoading) {
     return <h1> Loading ....</h1>;
   }
-  if (isLoading) {
+  if (error) {
     return <h1> {error?.message}</h1>;
   }
 
   let count = 0;
 
   return (
-    <div>
+    <div className="min-h-screen">
       <h1 className="bg-[#FCFAEE] py-10  text-center text-xl md:text-xl uppercase tracking-widest mb-3">
         All Product
       </h1>

@@ -1,6 +1,6 @@
 const Dashboard = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <h1 className="bg-[#FCFAEE] py-10  text-center text-xl md:text-2xl uppercase tracking-widest">
         Dashboard
       </h1>
