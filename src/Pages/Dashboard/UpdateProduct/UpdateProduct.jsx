@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useFieldArray, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
+import Loading from "../../../Components/Loading/Loading";
 
 const UpdateProduct = () => {
   const axiosPublic = useAxiosPublic();
@@ -90,10 +91,10 @@ const UpdateProduct = () => {
   }, [product, reset, appendImage]);
 
   if (isLoading || loadingCategories) {
-    return <h1> Loading ....</h1>;
+    return <Loading />;
   }
   if (error) {
-    return <h1> {error?.message}</h1>;
+    return <p> {error?.message}</p>;
   }
 
   return (

@@ -2,21 +2,20 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Container from "../../Container/Container";
 import { Link } from "react-router-dom";
+import Loading from "../../Loading/Loading";
 
 const BestProduct = () => {
   const axiosPublic = useAxiosPublic();
 
-  const {
-    data: products,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: products, isLoading } = useQuery({
     queryKey: ["best-products"],
     queryFn: () =>
       axiosPublic.get("/products").then((res) => res.data?.products),
   });
 
-  console.log(products);
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="my-10 md:my-20">

@@ -15,7 +15,7 @@ const Banner = () => {
             <h1 className="text-2xl md:text-4xl lg:text-6xl tracking-widest leading-10 mt-2 mb-2 md:mb-7">
               New Collection
             </h1>
-            <p className="text-sm md:text-base text-gray-500 tracking-wide mb-10 text-justify">
+            <p className="text-sm md:text-base text-gray-500 tracking-wide mb-10 text-justify max-w-xl">
               Look at the sunset, life is amazing, life is beautiful, life is
               what you make it
             </p>

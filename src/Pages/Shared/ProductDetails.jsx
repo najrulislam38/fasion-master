@@ -3,6 +3,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Container from "../../Components/Container/Container";
 import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/16/solid";
+import Loading from "../../Components/Loading/Loading";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -17,10 +18,10 @@ const ProductDetails = () => {
   });
 
   if (isLoading) {
-    return <h1> Loading ....</h1>;
+    return <Loading />;
   }
   if (isLoading) {
-    return <h1> {error?.message}</h1>;
+    return <p> {error?.message}</p>;
   }
 
   console.log(data);

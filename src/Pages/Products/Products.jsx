@@ -4,6 +4,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
+import Loading from "../../Components/Loading/Loading";
 
 const Products = () => {
   const axiosPublic = useAxiosPublic();
@@ -38,10 +39,10 @@ const Products = () => {
         });
 
   if (isLoading) {
-    return <h1> Loading ....</h1>;
+    return <Loading />;
   }
   if (error) {
-    return <h1> {error?.message}</h1>;
+    return <p> {error?.message}</p>;
   }
   // console.log(allProducts);
 

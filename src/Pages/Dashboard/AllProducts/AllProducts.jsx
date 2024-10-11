@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { TrashIcon } from "@heroicons/react/16/solid";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import Loading from "../../../Components/Loading/Loading";
 
 const AllProducts = () => {
   const axiosPublic = useAxiosPublic();
@@ -58,10 +59,10 @@ const AllProducts = () => {
   };
 
   if (isLoading) {
-    return <h1> Loading ....</h1>;
+    return <Loading />;
   }
   if (error) {
-    return <h1> {error?.message}</h1>;
+    return <p> {error?.message}</p>;
   }
 
   let count = 0;
