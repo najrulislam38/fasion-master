@@ -35,9 +35,9 @@ const Products = () => {
       : allProducts?.sort((a, b) => {
           switch (sortBy) {
             case "highToLowPrice":
-              return a.price - b.price;
-            case "lowToHighPrice":
               return b.price - a.price;
+            case "lowToHighPrice":
+              return a.price - b.price;
             default:
               return 0;
           }
